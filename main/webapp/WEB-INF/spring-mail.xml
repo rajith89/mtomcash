@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="smtpout.secureserver.net" />
+	<property name="port" value="80" />
+	<property name="username" value="MtoMCashAdmin@hsworld.net" />
+	<property name="password" value="ontag123" />
+ 
+	<property name="javaMailProperties">
+	   <props>
+       	      <prop key="mail.smtp.auth">true</prop>
+       	      <prop key="mail.smtp.starttls.enable">true</prop>
+       	   </props>
+	</property>
+</bean>
+ 
+
+<bean id="mailhandler" class="com.ontag.mcash.admin.web.util.MailHandler">
+	<property name="mailSender" ref="mailSender" />
+</bean>
+ 
+</beans>
